@@ -29,7 +29,7 @@ public:
         // approach 2
         ListNode *prev=NULL;
         ListNode *curr=head;
-        ListNode *nex=NULL;
+        ListNode *nex=curr->next;
         while(curr!=NULL)
         {
             
