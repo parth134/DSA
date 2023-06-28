@@ -15,14 +15,32 @@ public:
         {
             return head;
         }
-        ListNode *newHead=NULL;
-        while(head!=NULL)
+        // approach 1
+        // ListNode *newHead=NULL;
+        // while(head!=NULL)
+        // {
+        //     ListNode *next=head->next;
+        //     head->next=newHead;
+        //     newHead=head;
+        //     head=next;
+        // }
+        // return newHead;
+
+        // approach 2
+        ListNode *prev=NULL;
+        ListNode *curr=head;
+        ListNode *nex=NULL;
+        while(curr!=NULL)
         {
-            ListNode *next=head->next;
-            head->next=newHead;
-            newHead=head;
-            head=next;
+            
+            nex=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=nex;
         }
-        return newHead;
+        head=prev;
+        return head;
     }
+   
+       
 };
