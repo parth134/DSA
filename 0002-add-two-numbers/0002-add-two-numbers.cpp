@@ -15,14 +15,14 @@ public:
         ListNode *temp;
         ListNode *dummy=new ListNode();
         temp=dummy;
-        // if(l1==NULL)
-        // {
-        //     return l2;
-        // }
-        // if(l2==NULL)
-        // {
-        //     return l1;
-        // }
+        if(l1==NULL)
+        {
+            return l2;
+        }
+        if(l2==NULL)
+        {
+            return l1;
+        }
     
         while((l1!=NULL || l2!=NULL )|| carry)
         {
