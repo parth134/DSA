@@ -50,31 +50,39 @@
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* left, ListNode* right) {
-        if(left==NULL)
+        // Check if one of the lists is empty
+        if (left == NULL)
             return right;
-        if(right==NULL)
+        if (right == NULL)
             return left;
-        ListNode* ans=new ListNode(-1);
-        ListNode* mptr=ans;
-        while(left&&right){
-            if(left->val<=right->val){
-                mptr->next=left;
-                mptr=left;
-                left=left->next;
+
+        // Create a new dummy node as the starting point for the merged list
+        ListNode* ans = new ListNode(-1);
+        ListNode* mptr = ans; // Create a pointer to the current node in the merged list
+
+        // Iterate until either of the input lists reaches its end
+        while (left && right) {
+            if (left->val <= right->val) {
+                // If the value in the left list is smaller, append it to the merged list
+                mptr->next = left;
+                mptr = left; // Move the pointer to the current node to the newly appended node
+                left = left->next; // Move to the next node in the left list
+            } else {
+                // If the value in the right list is smaller, append it to the merged list
+                mptr->next = right;
+                mptr = right; // Move the pointer to the current node to the newly appended node
+                right = right->next; // Move to the next node in the right list
             }
-            else
-            {
-                mptr->next=right;
-                mptr=right;
-                right=right->next;
-            }
         }
-        if(left){
-            mptr->next=left;
+
+        // Append the remaining nodes from the non-empty list
+        if (left) {
+            mptr->next = left;
         }
-        if(right){
-            mptr->next=right;
+        if (right) {
+            mptr->next = right;
         }
-        return ans->next;
+
+        return ans->next; // Return the merged list (excluding the dummy node)
     }
 };
