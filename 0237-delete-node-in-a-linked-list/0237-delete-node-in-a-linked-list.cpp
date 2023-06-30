@@ -10,10 +10,10 @@ class Solution {
 public:
     void deleteNode(ListNode* node) {
         ListNode *head;
-        if(head==NULL)
-        {
-           cout<<"false";
-        }
+        // if(head==NULL)
+        // {
+        //    cout<<"false";
+        // }
         node->val=node->next->val;
         node->next=node->next->next;
     }
