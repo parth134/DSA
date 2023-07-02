@@ -39,7 +39,7 @@ public:
         // tail->next=NULL;
         // return NULL;
 
-        map<ListNode*,int>map;
+        unordered_map<ListNode*,int>map;
 
         while(headA || headB){
             if(headA){
