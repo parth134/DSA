@@ -9,34 +9,55 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        if(headA==NULL || headB==NULL)
-        {
-            return NULL;
-        }
-        ListNode *tail=headA;
-        while(tail->next)
-        {
-            tail=tail->next;
-        }
-        tail->next=headA;
-        ListNode *slow=headB,*fast=headB;
-        while(fast && fast->next)
-        {
-            slow=slow->next;
-            fast=fast->next->next;
-            if(slow==fast)
-            {
-                slow=headB;
-                while(slow!=fast)
-                {
-                    slow=slow->next;
-                    fast=fast->next;
+        // if(headA==NULL || headB==NULL)
+        // {
+        //     return NULL;
+        // }
+        // ListNode *tail=headA;
+        // while(tail->next)
+        // {
+        //     tail=tail->next;
+        // }
+        // tail->next=headA;
+        // ListNode *slow=headB,*fast=headB;
+        // while(fast && fast->next)
+        // {
+        //     slow=slow->next;
+        //     fast=fast->next->next;
+        //     if(slow==fast)
+        //     {
+        //         slow=headB;
+        //         while(slow!=fast)
+        //         {
+        //             slow=slow->next;
+        //             fast=fast->next;
+        //         }
+        //         tail->next=NULL;
+        //         return slow;
+        //     }
+        // }
+        // tail->next=NULL;
+        // return NULL;
+
+        map<ListNode*,int>map;
+
+        while(headA || headB){
+            if(headA){
+                if(map[headA]++){
+                    return headA;
                 }
-                tail->next=NULL;
-                return slow;
+                
+                headA=headA->next;
             }
+            if(headB){
+                if(map[headB]++){
+                    return headB;
+                }
+                headB=headB->next;
+            }
+
+
         }
-        tail->next=NULL;
         return NULL;
     }
 };
